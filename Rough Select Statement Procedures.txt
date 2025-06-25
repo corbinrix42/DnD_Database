@@ -1,0 +1,19 @@
+Overview of Character, Campaign, and Player:
+
+SELECT ch.first_Name || ' ' || ch.last_Name AS "Character Name", race_Name AS "Race", class_Name AS "Class Name", char_Level AS "Level", campaign_Name AS "Campaign Name", p.first_Name || ' ' || p.last_name AS "Player Name"
+FROM Characters ch
+    JOIN Campaign ca ON ch.campaign_ID = ca.campaign_ID
+    JOIN Classes cl ON ch.class_ID = cl.class_ID
+    JOIN Players p ON ch.player_ID = p.player_ID
+    JOIN Races r ON ch.race_ID = r.race_ID
+order by p.player_ID, ch.char_ID, ca.campaign_ID;
+
+
+Player Sheet:
+
+select first_Name || ' ' || last_Name AS "Character Name", class_Name AS "Class", stat_Name AS "Stat", stat_Num
+from characters ch
+    join Char_Statistics cs on ch.char_ID = cs.char_ID
+    join stat s on cs.stat_ID = s.stat_ID
+    join classes cl on ch.class_ID = cl.class_ID
+where ch.char_ID = 1;
